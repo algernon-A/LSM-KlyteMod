@@ -116,7 +116,7 @@ namespace LoadingScreenMod
 
         internal void OnSettingsUI(UIHelperBase helper)
         {
-            if (!BuildConfig.applicationVersion.StartsWith("1.11"))
+            if (!BuildConfig.applicationVersion.StartsWith("1.12"))
             {
                 CreateGroup(helper, "Major game update detected. Mod is now inactive.");
                 return;

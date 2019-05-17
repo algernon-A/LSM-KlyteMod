@@ -444,6 +444,7 @@ namespace LoadingScreenMod
             LoadingManager.instance.m_supportsExpansion[4] = Check(614580);
             LoadingManager.instance.m_supportsExpansion[5] = Check(715191);
             LoadingManager.instance.m_supportsExpansion[6] = Check(715194);
+            LoadingManager.instance.m_supportsExpansion[7] = Check(944071);
 
             bool isWinter = SimulationManager.instance.m_metaData.m_environment == "Winter";
 
@@ -494,6 +495,9 @@ namespace LoadingScreenMod
             if (LoadingManager.instance.m_supportsExpansion[6])
                 levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion7Prefabs" : "Expansion7Prefabs", 0.133f));
 
+            if (LoadingManager.instance.m_supportsExpansion[7])
+                levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion8Prefabs" : "Expansion8Prefabs", 0.1f));
+
             for (int i = 0; i < levelStrings.Length; i++)
                 if (Check(levelStrings[i].Value))
                     levels.Add(new KeyValuePair<string, float>(levelStrings[i].Key, 0.134f + i * 0.01f / levelStrings.Length));
@@ -528,10 +532,14 @@ namespace LoadingScreenMod
               new KeyValuePair<string, int>("Station3Prefabs",     715193),
               new KeyValuePair<string, int>("Station4Prefabs",     815380),
               new KeyValuePair<string, int>("Station5Prefabs",     944070),
+              new KeyValuePair<string, int>("Station6Prefabs",     1065490),
+              new KeyValuePair<string, int>("Station7Prefabs",     1065491),
               new KeyValuePair<string, int>("FestivalPrefabs",     614581),
               new KeyValuePair<string, int>("ChristmasPrefabs",    715192),
               new KeyValuePair<string, int>("ModderPack1Prefabs",  515190),
-              new KeyValuePair<string, int>("ModderPack2Prefabs",  547500) };
+              new KeyValuePair<string, int>("ModderPack2Prefabs",  547500),
+              new KeyValuePair<string, int>("ModderPack4Prefabs",  1059820)
+        };
 
         bool Check(int dlc) => SteamHelper.IsDLCOwned((SteamHelper.DLC) dlc) && (!Settings.settings.SkipPrefabs || !Settings.settings.SkipMatcher.Matches(dlc));
 
