@@ -17,7 +17,7 @@ namespace LoadingScreenMod
         public void OnEnabled()
         {
             if (!created)
-                if (BuildConfig.applicationVersion.StartsWith("1.12"))
+                if (BuildConfig.applicationVersion.StartsWith("1.13"))
                 {
                     LevelLoader.Create().Deploy();
                     //PackageManagerFix.Create().Deploy();
