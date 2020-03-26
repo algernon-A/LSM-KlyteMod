@@ -539,11 +539,14 @@ namespace LoadingScreenMod
               new KeyValuePair<string, int>("Station5Prefabs",     944070),
               new KeyValuePair<string, int>("Station6Prefabs",     1065490),
               new KeyValuePair<string, int>("Station7Prefabs",     1065491),
+              new KeyValuePair<string, int>("Station8Prefabs",     1148021),
               new KeyValuePair<string, int>("FestivalPrefabs",     614581),
               new KeyValuePair<string, int>("ChristmasPrefabs",    715192),
               new KeyValuePair<string, int>("ModderPack1Prefabs",  515190),
               new KeyValuePair<string, int>("ModderPack2Prefabs",  547500),
-              new KeyValuePair<string, int>("ModderPack4Prefabs",  1059820)
+              new KeyValuePair<string, int>("ModderPack4Prefabs",  1059820),
+              new KeyValuePair<string, int>("ModderPack5Prefabs",  1148020),
+              new KeyValuePair<string, int>("ModderPack6Prefabs",  1148022)
         };
 
         bool Check(int dlc) => SteamHelper.IsDLCOwned((SteamHelper.DLC) dlc) && (!Settings.settings.SkipPrefabs || !Settings.settings.SkipMatcher.Matches(dlc));
