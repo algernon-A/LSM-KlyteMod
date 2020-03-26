@@ -445,6 +445,8 @@ namespace LoadingScreenMod
             LoadingManager.instance.m_supportsExpansion[5] = Check(715191);
             LoadingManager.instance.m_supportsExpansion[6] = Check(715194);
             LoadingManager.instance.m_supportsExpansion[7] = Check(944071);
+            LoadingManager.instance.m_supportsExpansion[8] = Check(1146930);
+
 
             bool isWinter = SimulationManager.instance.m_metaData.m_environment == "Winter";
 
@@ -497,6 +499,9 @@ namespace LoadingScreenMod
 
             if (LoadingManager.instance.m_supportsExpansion[7])
                 levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion8Prefabs" : "Expansion8Prefabs", 0.1f));
+
+            if (LoadingManager.instance.m_supportsExpansion[8])
+                levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion9Prefabs" : "Expansion9Prefabs", 0.11f));
 
             for (int i = 0; i < levelStrings.Length; i++)
                 if (Check(levelStrings[i].Value))
