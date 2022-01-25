@@ -446,6 +446,7 @@ namespace LoadingScreenMod
             LoadingManager.instance.m_supportsExpansion[6] = Check(715194);
             LoadingManager.instance.m_supportsExpansion[7] = Check(944071);
             LoadingManager.instance.m_supportsExpansion[8] = Check(1146930);
+            LoadingManager.instance.m_supportsExpansion[9] = Check(1726380);
 
 
             bool isWinter = SimulationManager.instance.m_metaData.m_environment == "Winter";
@@ -503,6 +504,9 @@ namespace LoadingScreenMod
             if (LoadingManager.instance.m_supportsExpansion[8])
                 levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion9Prefabs" : "Expansion9Prefabs", 0.11f));
 
+            if (LoadingManager.instance.m_supportsExpansion[9])
+                levels.Add(new KeyValuePair<string, float>(isWinter ? "WinterExpansion10Prefabs" : "Expansion10Prefabs", 0.11f));
+
             for (int i = 0; i < levelStrings.Length; i++)
                 if (Check(levelStrings[i].Value))
                     levels.Add(new KeyValuePair<string, float>(levelStrings[i].Key, 0.134f + i * 0.01f / levelStrings.Length));
@@ -546,7 +550,8 @@ namespace LoadingScreenMod
               new KeyValuePair<string, int>("ModderPack2Prefabs",  547500),
               new KeyValuePair<string, int>("ModderPack4Prefabs",  1059820),
               new KeyValuePair<string, int>("ModderPack5Prefabs",  1148020),
-              new KeyValuePair<string, int>("ModderPack6Prefabs",  1148022)
+              new KeyValuePair<string, int>("ModderPack6Prefabs",  1148022),
+              new KeyValuePair<string, int>("ModderPack7Prefabs",  1726381)
         };
 
         bool Check(int dlc) => SteamHelper.IsDLCOwned((SteamHelper.DLC) dlc) && (!Settings.settings.SkipPrefabs || !Settings.settings.SkipMatcher.Matches(dlc));
