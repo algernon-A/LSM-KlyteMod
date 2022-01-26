@@ -551,7 +551,8 @@ namespace LoadingScreenMod
               new KeyValuePair<string, int>("ModderPack4Prefabs",  1059820),
               new KeyValuePair<string, int>("ModderPack5Prefabs",  1148020),
               new KeyValuePair<string, int>("ModderPack6Prefabs",  1148022),
-              new KeyValuePair<string, int>("ModderPack7Prefabs",  1726381)
+              new KeyValuePair<string, int>("ModderPack7Prefabs",  1531470),
+              new KeyValuePair<string, int>("ModderPack8Prefabs",  1531471)
         };
 
         bool Check(int dlc) => SteamHelper.IsDLCOwned((SteamHelper.DLC) dlc) && (!Settings.settings.SkipPrefabs || !Settings.settings.SkipMatcher.Matches(dlc));
