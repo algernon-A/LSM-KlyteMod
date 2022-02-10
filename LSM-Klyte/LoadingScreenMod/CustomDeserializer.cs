@@ -883,6 +883,14 @@ namespace LoadingScreenMod
 				return null;
 			}
 			T val = FindLoaded<T>(fullName);
+
+			// If there's a missing NetInfo, call ResolveLegacyPrefab to see if it maps to a new prefab name.
+			if (val == null && typeof(T) == typeof(NetInfo))
+			{
+				string newName = BuildConfig.ResolveLegacyPrefab(fullName);
+				val = FindLoaded<T>(newName);
+			}
+
 			if ((UnityEngine.Object)val == (UnityEngine.Object)null && Instance<CustomDeserializer>.instance.Load(ref fullName, FindAsset(fullName)))
 			{
 				val = FindLoaded<T>(fullName);
