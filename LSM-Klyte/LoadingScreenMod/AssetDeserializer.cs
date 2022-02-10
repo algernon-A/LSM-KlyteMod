@@ -78,18 +78,30 @@ namespace LoadingScreenMod
 			return DeserializeObject(type);
 		}
 
-		private object DeserializeSingleObject(Type type)
+		private object DeserializeSingleObject(Type type, Type expectedType)
 		{
 			object obj = Instance<CustomDeserializer>.instance.CustomDeserialize(package, type, reader);
 			if (obj != null)
-			{
 				return obj;
-			}
-			if (typeof(ScriptableObject).IsAssignableFrom(type) || typeof(GameObject).IsAssignableFrom(type))
-			{
+			if (typeof(ScriptableObject).IsAssignableFrom(type))
+				//return Instantiate(FindAsset(reader.ReadString()), isMain);
 				return Instantiate(package.FindByChecksum(reader.ReadString()), isMain, isTop: false);
+			if (typeof(GameObject).IsAssignableFrom(type))
+				//return Instantiate(FindAsset(reader.ReadString()), isMain);
+				return Instantiate(package.FindByChecksum(reader.ReadString()), isMain, isTop: false);
+
+			try
+			{
+				if (package.version < 3 && expectedType != null && expectedType == typeof(Package.Asset))
+					return reader.ReadUnityType(expectedType);
+
+				return reader.ReadUnityType(type, package);
 			}
-			return reader.ReadUnityType(type, package);
+			catch (MissingMethodException)
+			{
+				Util.DebugPrint("Unsupported type for deserialization:", type.Name);
+				return null;
+			}
 		}
 
 		private UnityEngine.Object DeserializeScriptableObject(Type type)
@@ -155,13 +167,13 @@ namespace LoadingScreenMod
 						value = array3;
 						for (int l = 0; l < num2; l++)
 						{
-							array3.SetValue(DeserializeSingleObject(elementType), l);
+							array3.SetValue(DeserializeSingleObject(elementType, field?.FieldType), l);
 						}
 					}
 				}
 				else
 				{
-					value = DeserializeSingleObject(type2);
+					value = DeserializeSingleObject(type2, field?.FieldType);
 				}
 				field?.SetValue(obj, value);
 			}
